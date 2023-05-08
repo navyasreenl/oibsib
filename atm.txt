@@ -1,0 +1,74 @@
+
+import java.util.Scanner;
+public class Atm
+{
+    public static void main(String args[])
+    { 
+        int balance = 50000, withdraw, deposit;
+        Scanner sc = new Scanner(System.in);
+        int pin=2003;
+        System.out.println("Please enter your pin number: ");
+        int pass=sc.nextInt();
+        int i=1;
+        if(pass!=pin)
+        {
+            while(true)
+            {
+                i++;
+            System.out.println("Wrong Pin.... ");
+            System.out.println("Please Try again (Max. Attempts :- 3) : ");
+            pass=sc.nextInt();
+            if(pass==pin)
+            {
+                break;
+            }
+            if(i==3){
+                System.out.println("The number of trials have exceeded!!!");
+            System.exit(0);
+            }
+            }
+        }
+        if(pass==pin)
+        {
+            System.out.println("<------Welcome------>");  
+            while(true)
+            {
+                System.out.println(" 1) Check your balance");
+                System.out.println(" 2) Withdraw your money");
+                System.out.println(" 3) Deposit money");
+                System.out.println(" 4) Quit");
+                System.out.print("Choose among the above options ");
+                int choice = sc.nextInt();
+                switch(choice)
+                {
+                    case 1:
+                    System.out.println("Balance: "+balance);
+                    System.out.println("");
+                    break;
+                    case 2:
+                    System.out.println("Enter withdraw amount: ");
+                    withdraw=sc.nextInt();
+                    if(withdraw>balance||balance==0)
+                    {
+                        System.out.printf("Insufficient Balance\n");
+                        break;
+                    }
+                    System.out.println("Please collect your money!");
+                    balance=balance-withdraw;
+                    System.out.println("");
+                    break;
+case 3:
+                    System.out.print("Enter money to be deposited: ");
+                    deposit = sc.nextInt();
+                    balance = balance + deposit;
+                    System.out.println("Successfully deposited");
+                    System.out.println(" ");
+                    break;
+
+                    case 4:
+                    System.out.println("Thank you for using our service!");
+                    System.exit(0);
+                }
+            }
+       }
+    }
